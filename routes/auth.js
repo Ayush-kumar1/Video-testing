@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 import express from 'express';
 const router = express.Router();
 import mongoose from "mongoose";
@@ -71,7 +75,7 @@ router.post("/signin", (req, res) => {
                     if (doMatch) {
                         // return res.json({ message: "Login sucessful" })
 
-                        const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET)
+                        const token = jwt.sign({ _id: savedUser._id }, process.env.JWT_SECRET)
                         const { _id, name, email } = savedUser;
                         res.json({ message: "Login succesful", token, user: { _id, name, email } })
                     } else {

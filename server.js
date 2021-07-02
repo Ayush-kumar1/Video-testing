@@ -1,13 +1,17 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 import express from 'express';
 import mongoose from "mongoose";
 import cors from 'cors';
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 import authRouter from "./routes/auth.js";
 import wishlistRouter from "./routes/Wishlist.js";
 
 // passowrd-2a5zlXAkQttxiSjJ
-const dbURL = "mongodb+srv://ADMIN:2a5zlXAkQttxiSjJ@cluster0.5biv2.mongodb.net/VideoDB?retryWrites=true&w=majority";
+const dbURL = process.env.dbURL;
 
 app.use(express.json())
 app.use(cors())
